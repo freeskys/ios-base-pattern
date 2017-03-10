@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Moya
 import RealmSwift
 import RxSwift
 import RxCocoa
@@ -16,15 +17,16 @@ class TableViewController: UITableViewController, CommentViewModel {
     let disposeBag = DisposeBag()
     var refresh = UIRefreshControl()
     var comments = [Comment]()
+    let provider = RxMoyaProvider<FakeJSONService>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Comments
-        self.comment().subscribe(onNext: { [weak self] (comment: [Comment]) in
+        self.comment(provider: provider).subscribe(onNext: { [weak self] (comment: [Comment]) in
             print("Success")
             self?.realmData()
-        }, onError: { (error: Error) in
+        }, onError: { (error) in
             print("Error")
             self.realmData()
         }, onCompleted: {
@@ -69,10 +71,10 @@ class TableViewController: UITableViewController, CommentViewModel {
 
     func reload() {
         // Comments
-        self.comment().subscribe(onNext: { [weak self] (comment: [Comment]) in
+        self.comment(provider: provider).subscribe(onNext: { [weak self] (comment: [Comment]) in
             print("Success")
             self?.realmData()
-        }, onError: { (error: Error) in
+        }, onError: { (error) in
             print("Error")
             self.realmData()
             

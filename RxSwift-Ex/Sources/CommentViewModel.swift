@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import Moya
 import ObjectMapper
 import RealmSwift
 import RxSwift
@@ -20,15 +21,16 @@ extension CommentViewModel {
     /// Get list of comments
     ///
     /// - Returns: return Comments The comments
-    func comment() -> Observable<[Comment]> {
+    func comment(provider: RxMoyaProvider<FakeJSONService>) -> Observable<[Comment]> {
         let observable = Observable<[Comment]>.create { (observer: AnyObserver<[Comment]>) -> Disposable in
-            let url = URL(string: "https://jsonplaceholder.typicode.com/comments")!
-            Alamofire.request(url).responseString { (response: DataResponse<String>) in
-                if let value = response.result.value {
-                    let comments = Mapper<Comment>().mapArray(JSONString: value)!
-                    print("The Comments: \(comments.count)")
-                    
+            provider.request(.allComments).subscribe { event in
+                switch event {
+                case let .next(response):
                     do {
+                        let responseString = try response.mapString()
+                        let comments = Mapper<Comment>().mapArray(JSONString: responseString)!
+                        print("The Comments: \(comments.count)")
+                        
                         let realm = try Realm()
                         try realm.write {
                             for comment: Comment in comments {
@@ -41,8 +43,10 @@ extension CommentViewModel {
                     } catch (let error) {
                         print("[CommentViewModel] ERROR: \(error)")
                     }
-                } else if let error = response.result.error {
-                    observer.onError(error)
+                case let .error(error):
+                    print("[CommentViewModel] ERROR: \(error)")
+                default:
+                    break
                 }
             }
             

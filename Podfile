@@ -7,6 +7,7 @@ target 'iOS-Base-Pattern' do
 
   # Pods for iOS-Base-Pattern
   pod 'Alamofire', '~> 4.3' # Networking library
+  pod 'Moya/RxSwift' # Network abstraction
   pod 'ObjectMapper', '~> 2.2' # Mapping JSON into object
   pod 'ObjectMapper+Realm', '~> 0.2' # ObjectMapper + Realm
   pod 'RxAlamofire', '~> 3.0' # Alamofire networking library
