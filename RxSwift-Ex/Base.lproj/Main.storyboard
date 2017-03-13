@@ -9,24 +9,24 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--RxSwift-->
+        <!--Comments-->
         <scene sceneID="ABk-Jl-26L">
             <objects>
-                <tableViewController storyboardIdentifier="TableView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XFB-Lw-yMS" customClass="TableViewController" customModule="iOS_Base_Pattern" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CommentView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XFB-Lw-yMS" customClass="TableViewController" customModule="iOS_Base_Pattern" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fcY-Il-5Ce">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="rUh-Gq-h2p" customClass="TableViewCell" customModule="iOS_Base_Pattern" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="rUh-Gq-h2p" customClass="CommentTableViewCell" customModule="iOS_Base_Pattern" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rUh-Gq-h2p" id="wUt-mK-o8X">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b69-rT-oFH">
-                                            <rect key="frame" x="16" y="11" width="45" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b69-rT-oFH">
+                                            <rect key="frame" x="16" y="11" width="34" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -50,11 +50,61 @@
                             <outlet property="delegate" destination="XFB-Lw-yMS" id="3qY-ft-ChM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="RxSwift" id="kS3-Gd-nBm"/>
+                    <navigationItem key="navigationItem" title="Comments" id="kS3-Gd-nBm"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BAc-DC-7mg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1968.8" y="108.39580209895054"/>
+            <point key="canvasLocation" x="2961" y="108"/>
+        </scene>
+        <!--Posts-->
+        <scene sceneID="yDG-F4-efX">
+            <objects>
+                <tableViewController storyboardIdentifier="PostView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wqz-cA-7M6" customClass="PostTableViewController" customModule="iOS_Base_Pattern" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7bL-t5-T45">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="uCJ-31-zEp" customClass="PostTableViewCell" customModule="iOS_Base_Pattern" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uCJ-31-zEp" id="y22-Xe-S6p">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uw3-nj-qWB">
+                                            <rect key="frame" x="16" y="11" width="32" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="uw3-nj-qWB" firstAttribute="top" secondItem="y22-Xe-S6p" secondAttribute="topMargin" constant="3" id="Mz4-em-SUb"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="uw3-nj-qWB" secondAttribute="bottom" constant="3" id="TkU-8V-80S"/>
+                                        <constraint firstItem="uw3-nj-qWB" firstAttribute="centerY" secondItem="y22-Xe-S6p" secondAttribute="centerY" id="UT4-7x-3vX"/>
+                                        <constraint firstItem="uw3-nj-qWB" firstAttribute="leading" secondItem="y22-Xe-S6p" secondAttribute="leadingMargin" constant="8" id="u4m-Os-Cls"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="uw3-nj-qWB" secondAttribute="trailing" constant="8" id="vYd-20-RHU"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="titleLabel" destination="uw3-nj-qWB" id="dWr-fO-rif"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Wqz-cA-7M6" id="ZB0-eT-Bbr"/>
+                            <outlet property="delegate" destination="Wqz-cA-7M6" id="agI-9i-qTh"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Posts" id="jyj-8B-3i4"/>
+                    <connections>
+                        <segue destination="XFB-Lw-yMS" kind="show" identifier="openDetail" id="BpI-sa-G5n"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vpB-sJ-suS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2025" y="107"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="03k-b7-5yn">
@@ -67,7 +117,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="XFB-Lw-yMS" kind="relationship" relationship="rootViewController" id="css-rH-fdB"/>
+                        <segue destination="Wqz-cA-7M6" kind="relationship" relationship="rootViewController" id="ywD-hN-lQW"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fJQ-3p-5Vd" userLabel="First Responder" sceneMemberID="firstResponder"/>

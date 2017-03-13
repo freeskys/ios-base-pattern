@@ -14,25 +14,39 @@ import RxCocoa
 
 class TableViewController: UITableViewController, CommentViewModel {
 
+    let dataSource = CommentTableViewDataSource()
     let disposeBag = DisposeBag()
-    var refresh = UIRefreshControl()
-    var comments = [Comment]()
     let provider = RxMoyaProvider<FakeJSONService>()
+    var refresh = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initData()
+        initUI()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Init
+    
+    func initData() {
         // Comments
         self.comment(provider: provider).subscribe(onNext: { [weak self] (comment: [Comment]) in
             print("Success")
             self?.realmData()
-        }, onError: { (error) in
-            print("Error")
-            self.realmData()
+            }, onError: { (error) in
+                print("Error")
+                self.realmData()
         }, onCompleted: {
             print("Completed")
         }).addDisposableTo(disposeBag)
-        
+    }
+
+    func initUI() {
         refresh.backgroundColor = UIColor.red
         refresh.tintColor = UIColor.white
         refresh.addTarget(self, action: #selector(TableViewController.reload), for: .valueChanged)
@@ -40,17 +54,7 @@ class TableViewController: UITableViewController, CommentViewModel {
         
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        tableView.dataSource = dataSource
     }
     
     // MARK: - Functions
@@ -59,7 +63,7 @@ class TableViewController: UITableViewController, CommentViewModel {
         // Realm
         do {
             let realm = try Realm()
-            self.comments = realm.objects(Comment.self).toArray()
+            self.dataSource.comments = realm.objects(Comment.self).toArray()
             
             self.tableView.reloadData()
         } catch (let error) {

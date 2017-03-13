@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
+class CommentTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -21,6 +21,12 @@ class TableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    // MARK: - Function
+    
+    func configure(comment: Comment) {
+        self.nameLabel.text = comment.name
     }
 
 }

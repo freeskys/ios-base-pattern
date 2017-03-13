@@ -11,16 +11,22 @@
 		41D305F130EFC26A439FA90B /* Pods_iOS_Base_PatternUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3B061FCCEDCC9CDCB7C8ED /* Pods_iOS_Base_PatternUITests.framework */; };
 		4258BB2C8E5FF8D16456ACAB /* Pods_RxSwift_ExTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96E8B84661024C4052E8F844 /* Pods_RxSwift_ExTests.framework */; };
 		6272F2301E72441C00813E38 /* FakeJSONService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6272F22F1E72441C00813E38 /* FakeJSONService.swift */; };
+		6272F2341E7252E800813E38 /* CommentTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6272F2331E7252E800813E38 /* CommentTableViewDataSource.swift */; };
+		6272F2371E725E0D00813E38 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6272F2361E725E0D00813E38 /* Post.swift */; };
+		6272F2391E725EEB00813E38 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6272F2381E725EEB00813E38 /* PostViewModel.swift */; };
+		6272F23C1E72630300813E38 /* PostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6272F23B1E72630300813E38 /* PostTableViewController.swift */; };
+		6272F23E1E72649500813E38 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6272F23D1E72649500813E38 /* PostTableViewCell.swift */; };
+		6272F2401E7264EA00813E38 /* PostTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6272F23F1E7264EA00813E38 /* PostTableViewDataSource.swift */; };
 		62BD6B771E49A5CC00196E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BD6B761E49A5CC00196E3D /* AppDelegate.swift */; };
 		62BD6B7C1E49A5CC00196E3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62BD6B7A1E49A5CC00196E3D /* Main.storyboard */; };
 		62BD6B7E1E49A5CC00196E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62BD6B7D1E49A5CC00196E3D /* Assets.xcassets */; };
 		62BD6B811E49A5CC00196E3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62BD6B7F1E49A5CC00196E3D /* LaunchScreen.storyboard */; };
 		62BD6B8C1E49A5CC00196E3D /* RxSwift_ExTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BD6B8B1E49A5CC00196E3D /* RxSwift_ExTests.swift */; };
 		62BD6B971E49A5CC00196E3D /* RxSwift_ExUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BD6B961E49A5CC00196E3D /* RxSwift_ExUITests.swift */; };
-		62C04DC71E7008BE00A212EB /* TableView-TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C04DC61E7008BE00A212EB /* TableView-TableView.swift */; };
+		62C04DC71E7008BE00A212EB /* CommentTableView-TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C04DC61E7008BE00A212EB /* CommentTableView-TableView.swift */; };
 		62C04DCA1E7009BB00A212EB /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C04DC91E7009BB00A212EB /* CommentViewModel.swift */; };
-		62CB99811E4C032D007A3908 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CB99801E4C032D007A3908 /* TableViewController.swift */; };
-		62CB99831E4C040D007A3908 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CB99821E4C040D007A3908 /* TableViewCell.swift */; };
+		62CB99811E4C032D007A3908 /* CommentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CB99801E4C032D007A3908 /* CommentTableViewController.swift */; };
+		62CB99831E4C040D007A3908 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CB99821E4C040D007A3908 /* CommentTableViewCell.swift */; };
 		62F2E0901E4AD638005F9969 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F2E08F1E4AD638005F9969 /* Comment.swift */; };
 		841E3086C70E00D7BD9B2B86 /* Pods_iOS_Base_PatternTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E47D6AE7FC84D3999DB81C9 /* Pods_iOS_Base_PatternTests.framework */; };
 		EF60B211FC6A773CA1684EEF /* Pods_RxSwift_ExUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE43D7C08BF08575C608940E /* Pods_RxSwift_ExUITests.framework */; };
@@ -48,6 +54,12 @@
 		220DCE97F0B6FDB092ECDD76 /* Pods-iOS-Base-PatternTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Base-PatternTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Base-PatternTests/Pods-iOS-Base-PatternTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5D6DA9437283DC3211782F58 /* Pods_iOS_Base_Pattern.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Base_Pattern.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6272F22F1E72441C00813E38 /* FakeJSONService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeJSONService.swift; path = Sources/FakeJSONService.swift; sourceTree = "<group>"; };
+		6272F2331E7252E800813E38 /* CommentTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentTableViewDataSource.swift; path = Sources/CommentTableViewDataSource.swift; sourceTree = "<group>"; };
+		6272F2361E725E0D00813E38 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Sources/Post.swift; sourceTree = "<group>"; };
+		6272F2381E725EEB00813E38 /* PostViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostViewModel.swift; path = Sources/PostViewModel.swift; sourceTree = "<group>"; };
+		6272F23B1E72630300813E38 /* PostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostTableViewController.swift; path = Sources/PostTableViewController.swift; sourceTree = "<group>"; };
+		6272F23D1E72649500813E38 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostTableViewCell.swift; path = Sources/PostTableViewCell.swift; sourceTree = "<group>"; };
+		6272F23F1E7264EA00813E38 /* PostTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostTableViewDataSource.swift; path = Sources/PostTableViewDataSource.swift; sourceTree = "<group>"; };
 		62BD6B731E49A5CC00196E3D /* iOS-Base-Pattern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-Base-Pattern.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62BD6B761E49A5CC00196E3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62BD6B7B1E49A5CC00196E3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,10 +72,10 @@
 		62BD6B921E49A5CC00196E3D /* iOS-Base-PatternUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS-Base-PatternUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62BD6B961E49A5CC00196E3D /* RxSwift_ExUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwift_ExUITests.swift; sourceTree = "<group>"; };
 		62BD6B981E49A5CC00196E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		62C04DC61E7008BE00A212EB /* TableView-TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TableView-TableView.swift"; path = "Sources/TableView-TableView.swift"; sourceTree = "<group>"; };
+		62C04DC61E7008BE00A212EB /* CommentTableView-TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CommentTableView-TableView.swift"; path = "Sources/CommentTableView-TableView.swift"; sourceTree = "<group>"; };
 		62C04DC91E7009BB00A212EB /* CommentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentViewModel.swift; path = Sources/CommentViewModel.swift; sourceTree = "<group>"; };
-		62CB99801E4C032D007A3908 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = Sources/TableViewController.swift; sourceTree = "<group>"; };
-		62CB99821E4C040D007A3908 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = Sources/TableViewCell.swift; sourceTree = "<group>"; };
+		62CB99801E4C032D007A3908 /* CommentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentTableViewController.swift; path = Sources/CommentTableViewController.swift; sourceTree = "<group>"; };
+		62CB99821E4C040D007A3908 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentTableViewCell.swift; path = Sources/CommentTableViewCell.swift; sourceTree = "<group>"; };
 		62F2E08F1E4AD638005F9969 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Comment.swift; path = Sources/Comment.swift; sourceTree = "<group>"; };
 		713ED05D17A28E4654DDCF1C /* Pods_RxSwift_Ex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwift_Ex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AF0120BE9B266C78D38446A /* Pods-iOS-Base-Pattern.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Base-Pattern.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Base-Pattern/Pods-iOS-Base-Pattern.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +140,7 @@
 		6272F2311E7248C500813E38 /* FakeJSON */ = {
 			isa = PBXGroup;
 			children = (
+				6272F2351E725E0200813E38 /* Post */,
 				6272F2321E7248F500813E38 /* Comment */,
 				6272F22F1E72441C00813E38 /* FakeJSONService.swift */,
 			);
@@ -141,6 +154,25 @@
 				62C04DC91E7009BB00A212EB /* CommentViewModel.swift */,
 			);
 			name = Comment;
+			sourceTree = "<group>";
+		};
+		6272F2351E725E0200813E38 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				6272F2361E725E0D00813E38 /* Post.swift */,
+				6272F2381E725EEB00813E38 /* PostViewModel.swift */,
+			);
+			name = Post;
+			sourceTree = "<group>";
+		};
+		6272F23A1E72624E00813E38 /* PostTableView */ = {
+			isa = PBXGroup;
+			children = (
+				6272F23D1E72649500813E38 /* PostTableViewCell.swift */,
+				6272F23B1E72630300813E38 /* PostTableViewController.swift */,
+				6272F23F1E7264EA00813E38 /* PostTableViewDataSource.swift */,
+			);
+			name = PostTableView;
 			sourceTree = "<group>";
 		};
 		62BD6B6A1E49A5CC00196E3D = {
@@ -211,19 +243,21 @@
 		62BD6BA71E49B30F00196E3D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				62C04DC31E70081800A212EB /* TableView */,
+				6272F23A1E72624E00813E38 /* PostTableView */,
+				62C04DC31E70081800A212EB /* CommentTableView */,
 			);
 			name = Views;
 			sourceTree = "<group>";
 		};
-		62C04DC31E70081800A212EB /* TableView */ = {
+		62C04DC31E70081800A212EB /* CommentTableView */ = {
 			isa = PBXGroup;
 			children = (
-				62CB99821E4C040D007A3908 /* TableViewCell.swift */,
-				62CB99801E4C032D007A3908 /* TableViewController.swift */,
-				62C04DC61E7008BE00A212EB /* TableView-TableView.swift */,
+				62CB99821E4C040D007A3908 /* CommentTableViewCell.swift */,
+				62CB99801E4C032D007A3908 /* CommentTableViewController.swift */,
+				6272F2331E7252E800813E38 /* CommentTableViewDataSource.swift */,
+				62C04DC61E7008BE00A212EB /* CommentTableView-TableView.swift */,
 			);
-			name = TableView;
+			name = CommentTableView;
 			sourceTree = "<group>";
 		};
 		62C04DC51E70086B00A212EB /* ViewModels */ = {
@@ -552,13 +586,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62C04DC71E7008BE00A212EB /* TableView-TableView.swift in Sources */,
+				6272F2391E725EEB00813E38 /* PostViewModel.swift in Sources */,
+				6272F2341E7252E800813E38 /* CommentTableViewDataSource.swift in Sources */,
+				62C04DC71E7008BE00A212EB /* CommentTableView-TableView.swift in Sources */,
 				62BD6B771E49A5CC00196E3D /* AppDelegate.swift in Sources */,
-				62CB99831E4C040D007A3908 /* TableViewCell.swift in Sources */,
+				62CB99831E4C040D007A3908 /* CommentTableViewCell.swift in Sources */,
+				6272F2401E7264EA00813E38 /* PostTableViewDataSource.swift in Sources */,
 				6272F2301E72441C00813E38 /* FakeJSONService.swift in Sources */,
-				62CB99811E4C032D007A3908 /* TableViewController.swift in Sources */,
+				62CB99811E4C032D007A3908 /* CommentTableViewController.swift in Sources */,
+				6272F2371E725E0D00813E38 /* Post.swift in Sources */,
+				6272F23C1E72630300813E38 /* PostTableViewController.swift in Sources */,
 				62C04DCA1E7009BB00A212EB /* CommentViewModel.swift in Sources */,
 				62F2E0901E4AD638005F9969 /* Comment.swift in Sources */,
+				6272F23E1E72649500813E38 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

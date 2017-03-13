@@ -12,6 +12,7 @@ import Moya
 enum FakeJSONService {
     
     case allComments
+    case allPosts
     
 }
 
@@ -25,6 +26,8 @@ extension FakeJSONService: TargetType {
         switch self {
         case .allComments:
             return "/comments"
+        case .allPosts:
+            return "/posts"
         }
     }
     
