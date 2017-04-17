@@ -37,24 +37,9 @@ class PostTableViewController: BaseTableViewController, PostViewModel {
         
         // Load realm
         self.realmData()
-        BaseNetworking.initNetworking()
         
-        // Subscribe
-        self.post(provider: provider).subscribe(onNext: { [weak self](post: [Post]) in
-            print("Success")
-            
-            BaseNetworking.onSuccess()
-        }, onError: { (error) in
-            print("Error")
-            
-            BaseNetworking.onError()
-        }, onCompleted: { 
-            print("Completed")
-            
-            // Load realm
-            self.realmData()
-            BaseNetworking.onCompleted()
-        }).addDisposableTo(disposeBag)
+        // Load backend
+        self.backendData()
     }
     
     override func initUI() {
@@ -71,19 +56,7 @@ class PostTableViewController: BaseTableViewController, PostViewModel {
     
     // MARK: - Functions
     
-    func realmData() {
-        // Realm
-        do {
-            let realm = try Realm()
-            self.posts.value = realm.objects(Post.self).toArray()
-        } catch (let error) {
-            print("[PostTableViewController] ERROR: \(error)")
-        }
-    }
-    
-    // MARK: - Refresh control
-    
-    override func reload() {
+    func backendData() {
         // Show network indicator
         BaseNetworking.initNetworking()
         
@@ -105,6 +78,23 @@ class PostTableViewController: BaseTableViewController, PostViewModel {
             BaseNetworking.onCompleted()
             self.refresh.endRefreshing()
         }).addDisposableTo(disposeBag)
+    }
+    
+    func realmData() {
+        // Realm
+        do {
+            let realm = try Realm()
+            self.posts.value = realm.objects(Post.self).toArray()
+        } catch (let error) {
+            print("[PostTableViewController] ERROR: \(error)")
+        }
+    }
+    
+    // MARK: - Refresh control
+    
+    override func reload() {
+        // Load backend
+        self.backendData()
     }
 
     /*

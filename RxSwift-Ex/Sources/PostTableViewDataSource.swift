@@ -15,7 +15,6 @@ class PostTableViewDataSource: NSObject, UITableViewDataSource, RxTableViewDataS
     
     typealias Element = [Post]
     
-//    var posts = [Post]()
     var items: Element?
     
     // MARK: - Table view data source
