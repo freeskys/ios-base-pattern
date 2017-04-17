@@ -14,7 +14,7 @@ import RxCocoa
 
 class PostTableViewController: BaseTableViewController, PostViewModel {
 
-//    let posts = Variable<[Post]>([])
+    let posts = Variable<[Post]>([])
     
     let dataSource = PostTableViewDataSource()
     let disposeBag = DisposeBag()
@@ -65,10 +65,8 @@ class PostTableViewController: BaseTableViewController, PostViewModel {
         refresh.addTarget(self, action: #selector(TableViewController.reload), for: .valueChanged)
         self.refreshControl = refresh
         
-        tableView.dataSource = dataSource
-//        posts.asObservable().bind(to: tableView.rx.items(cellIdentifier: "Cell")) { (tableView, object, cell) in
-//            
-//        }.addDisposableTo(disposeBag)
+        tableView.dataSource = nil
+        posts.asObservable().bind(to: tableView.rx.items(dataSource: dataSource)).addDisposableTo(disposeBag)
     }
     
     // MARK: - Functions
@@ -77,9 +75,7 @@ class PostTableViewController: BaseTableViewController, PostViewModel {
         // Realm
         do {
             let realm = try Realm()
-            self.dataSource.posts = realm.objects(Post.self).toArray()
-            
-            self.tableView.reloadData()
+            self.posts.value = realm.objects(Post.self).toArray()
         } catch (let error) {
             print("[PostTableViewController] ERROR: \(error)")
         }
