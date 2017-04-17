@@ -26,24 +26,29 @@ extension PostViewModel {
             provider.request(.allPosts).subscribe { event in
                 switch event {
                 case let .next(response):
-                    do {
-                        let responseString = try response.mapString()
-                        let posts = Mapper<Post>().mapArray(JSONString: responseString)!
-                        print("The Posts: \(posts.count)")
-                        
-                        let realm = try Realm()
-                        try realm.write {
-                            for post: Post in posts {
-                                realm.add(post, update: true)
+                    BaseNetworking.process(success: { 
+                        do {
+                            let responseString = try response.mapString()
+                            let posts = Mapper<Post>().mapArray(JSONString: responseString)!
+                            print("The Posts: \(posts.count)")
+                            
+                            let realm = try Realm()
+                            try realm.write {
+                                for post: Post in posts {
+                                    realm.add(post, update: true)
+                                }
                             }
+                            
+                            observer.onNext(posts)
+                            observer.onCompleted()
+                        } catch (let error) {
+                            print("[PostViewModel] ERROR: \(error)")
+                            observer.onError(error)
                         }
-                        
-                        observer.onNext(posts)
+                    }, failure: { 
+                        print("[PostViewModel] ERROR: Internet Connection unreachable")
                         observer.onCompleted()
-                    } catch (let error) {
-                        print("[PostViewModel] ERROR: \(error)")
-                        observer.onError(error)
-                    }
+                    })
                 case let .error(error):
                     print("[PostViewModel] ERROR: \(error)")
                     observer.onError(error)

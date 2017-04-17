@@ -10,6 +10,7 @@ target 'iOS-Base-Pattern' do
   pod 'Moya/RxSwift' # Network abstraction
   pod 'ObjectMapper', '~> 2.2' # Mapping JSON into object
   pod 'ObjectMapper+Realm', '~> 0.2' # ObjectMapper + Realm
+  pod 'ReachabilitySwift', '~> 3' # Checking internet connection availability
   pod 'RxAlamofire', '~> 3.0' # Alamofire networking library
   pod 'RxCocoa', '~> 3.2' # Reactive for Cocoa
   pod 'RxRealm', '~> 0.5' # Reactive for Realm

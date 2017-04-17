@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import ReachabilitySwift
 
 struct BaseNetworking {
     
@@ -29,6 +30,24 @@ struct BaseNetworking {
     /// Called after networking process completed
     static func onCompleted() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+    
+    /// Do a networking process
+    ///
+    /// - Parameters:
+    ///   - success: success If internet is reachable
+    ///   - failure: failure If internet is not reachable
+    static func process(success: () -> Void,
+                        failure: () -> Void) {
+        guard let reachability = Reachability() else {
+            return
+        }
+        
+        if reachability.isReachable {
+            success()
+        } else {
+            failure()
+        }
     }
     
 }
