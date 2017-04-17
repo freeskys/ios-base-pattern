@@ -23,8 +23,10 @@ class PostTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configure(post: Post) {
-        self.titleLabel.text = post.title
+    func configure(post: Post?) {
+        if let thePost = post {
+            self.titleLabel.text = thePost.title
+        }
     }
     
 }

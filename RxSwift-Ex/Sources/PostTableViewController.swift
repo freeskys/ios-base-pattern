@@ -12,8 +12,10 @@ import RealmSwift
 import RxSwift
 import RxCocoa
 
-class PostTableViewController: UITableViewController, PostViewModel {
+class PostTableViewController: BaseTableViewController, PostViewModel {
 
+//    let posts = Variable<[Post]>([])
+    
     let dataSource = PostTableViewDataSource()
     let disposeBag = DisposeBag()
     let provider = RxMoyaProvider<FakeJSONService>()
@@ -21,9 +23,6 @@ class PostTableViewController: UITableViewController, PostViewModel {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        initData()
-        initUI()
     }
     
     override func didReceiveMemoryWarning() {
@@ -33,28 +32,43 @@ class PostTableViewController: UITableViewController, PostViewModel {
     
     // MARK: - Init
     
-    func initData() {
-        // Posts
+    override func initData() {
+        super.initData()
+        
+        // Load realm
+        self.realmData()
+        BaseNetworking.initNetworking()
+        
+        // Subscribe
         self.post(provider: provider).subscribe(onNext: { [weak self](post: [Post]) in
             print("Success")
-            self?.realmData()
+            
+            BaseNetworking.onSuccess()
         }, onError: { (error) in
             print("Error")
-            self.realmData()
+            
+            BaseNetworking.onError()
         }, onCompleted: { 
             print("Completed")
+            
+            // Load realm
+            self.realmData()
+            BaseNetworking.onCompleted()
         }).addDisposableTo(disposeBag)
     }
     
-    func initUI() {
+    override func initUI() {
+        super.initUI()
+        
         refresh.backgroundColor = UIColor.red
         refresh.tintColor = UIColor.white
         refresh.addTarget(self, action: #selector(TableViewController.reload), for: .valueChanged)
         self.refreshControl = refresh
         
-        tableView.estimatedRowHeight = 44.0
-        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.dataSource = dataSource
+//        posts.asObservable().bind(to: tableView.rx.items(cellIdentifier: "Cell")) { (tableView, object, cell) in
+//            
+//        }.addDisposableTo(disposeBag)
     }
     
     // MARK: - Functions
@@ -73,19 +87,26 @@ class PostTableViewController: UITableViewController, PostViewModel {
     
     // MARK: - Refresh control
     
-    func reload() {
+    override func reload() {
+        // Show network indicator
+        BaseNetworking.initNetworking()
+        
         // Posts
         self.post(provider: provider).subscribe(onNext: { [weak self](post: [Post]) in
             print("Success")
-            self?.realmData()
+            
+            BaseNetworking.onSuccess()
         }, onError: { (error) in
             print("Error")
-            self.realmData()
             
+            BaseNetworking.onError()
             self.refresh.endRefreshing()
         }, onCompleted: {
             print("Completed")
             
+            // Load realm
+            self.realmData()
+            BaseNetworking.onCompleted()
             self.refresh.endRefreshing()
         }).addDisposableTo(disposeBag)
     }

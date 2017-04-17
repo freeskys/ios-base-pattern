@@ -33,7 +33,7 @@ extension Reactive where Base: UICollectionView {
          ])
 
          items
-         .bindTo(collectionView.rx.items) { (collectionView, row, element) in
+         .bind(to: collectionView.rx.items) { (collectionView, row, element) in
             let indexPath = IndexPath(row: row, section: 0)
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! NumberCell
              cell.value?.text = "\(element) @ \(row)"
@@ -70,7 +70,7 @@ extension Reactive where Base: UICollectionView {
          ])
 
          items
-             .bindTo(collectionView.rx.items(cellIdentifier: "Cell", cellType: NumberCell.self)) { (row, element, cell) in
+             .bind(to: collectionView.rx.items(cellIdentifier: "Cell", cellType: NumberCell.self)) { (row, element, cell) in
                 cell.value?.text = "\(element) @ \(row)"
              }
              .disposed(by: disposeBag)
@@ -131,7 +131,7 @@ extension Reactive where Base: UICollectionView {
          }
 
          items
-            .bindTo(collectionView.rx.items(dataSource: dataSource))
+            .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
     */
     public func items<
@@ -277,11 +277,11 @@ extension Reactive where Base: UICollectionView {
 extension Reactive where Base: UICollectionView {
     
     /// Reactive wrapper for `delegate` message `collectionView:didUpdateFocusInContext:withAnimationCoordinator:`.
-    public var didUpdateFocusInContextWithAnimationCoordinator: ControlEvent<(context: UIFocusUpdateContext, animationCoordinator: UIFocusAnimationCoordinator)> {
+    public var didUpdateFocusInContextWithAnimationCoordinator: ControlEvent<(context: UICollectionViewFocusUpdateContext, animationCoordinator: UIFocusAnimationCoordinator)> {
 
         let source = delegate.methodInvoked(#selector(UICollectionViewDelegate.collectionView(_:didUpdateFocusIn:with:)))
-            .map { a -> (context: UIFocusUpdateContext, animationCoordinator: UIFocusAnimationCoordinator) in
-                let context = a[1] as! UIFocusUpdateContext
+            .map { a -> (context: UICollectionViewFocusUpdateContext, animationCoordinator: UIFocusAnimationCoordinator) in
+                let context = a[1] as! UICollectionViewFocusUpdateContext
                 let animationCoordinator = a[2] as! UIFocusAnimationCoordinator
                 return (context: context, animationCoordinator: animationCoordinator)
             }

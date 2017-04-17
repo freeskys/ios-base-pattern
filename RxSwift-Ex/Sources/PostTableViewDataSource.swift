@@ -8,12 +8,32 @@
 
 import Foundation
 import UIKit
+import RxCocoa
+import RxSwift
 
 class PostTableViewDataSource: NSObject, UITableViewDataSource {
     
+//    typealias Element = [Post]
+    
     var posts = [Post]()
+//    var posts: Element?
     
     // MARK: - Table view data source
+    
+//    func tableView(_ tableView: UITableView, observedEvent: Event<[Post]>) {
+//        switch observedEvent {
+//        case .next(let posts):
+//            print("SUCCESS")
+//            self.posts = posts
+//            
+//            tableView.reloadData()
+//        case .error(let error):
+//            print("ERROR: \(error)")
+//            
+//        case .completed:
+//            print("COMPLETED")
+//        }
+//    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
