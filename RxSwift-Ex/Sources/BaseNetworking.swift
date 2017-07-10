@@ -12,10 +12,14 @@ import ReachabilitySwift
 
 struct BaseNetworking {
     
+    // MARK: - Init
+    
     /// Run before calling networking process
     static func initNetworking() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
+    
+    // MARK: - Callbacks
     
     /// Called when networking process success
     static func onSuccess() {
@@ -31,6 +35,8 @@ struct BaseNetworking {
     static func onCompleted() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
+    
+    // MARK: - Functions
     
     /// Do a networking process
     ///

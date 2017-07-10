@@ -19,7 +19,6 @@ class PostTableViewController: BaseTableViewController, PostViewModel {
     let dataSource = PostTableViewDataSource()
     let disposeBag = DisposeBag()
     let provider = RxMoyaProvider<FakeJSONService>()
-    var refresh = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,12 +42,10 @@ class PostTableViewController: BaseTableViewController, PostViewModel {
     }
     
     override func initUI() {
-        super.initUI()
-        
         refresh.backgroundColor = UIColor.red
         refresh.tintColor = UIColor.white
-        refresh.addTarget(self, action: #selector(TableViewController.reload), for: .valueChanged)
-        self.refreshControl = refresh
+        
+        super.initUI()
         
         tableView.dataSource = nil
         posts.asObservable().bind(to: tableView.rx.items(dataSource: dataSource)).addDisposableTo(disposeBag)

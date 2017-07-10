@@ -10,6 +10,8 @@ import UIKit
 
 class BaseTableViewController: UITableViewController {
 
+    var refresh = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,6 +35,13 @@ class BaseTableViewController: UITableViewController {
         // Self sizing cell
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.initRefreshUI()
+    }
+    
+    func initRefreshUI() {
+        refresh.addTarget(self, action: #selector(BaseTableViewController.reload), for: .valueChanged)
+        self.refreshControl = refresh
     }
     
     // MARK: - Refresh control
